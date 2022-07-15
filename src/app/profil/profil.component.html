@@ -1,0 +1,34 @@
+<div class="container" *ngIf="isLoggedIn">
+  <div class="user-card">
+  <mat-card class="card">
+    <mat-card-header>
+
+      <mat-card-title>{{user.nom}} {{user.prenom}}</mat-card-title>
+      <mat-card-subtitle>{{user.mail}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>mot de passe : {{password}}</p>
+      <p>Bureau: {{user.bureau}}</p>
+      <p>Télephone: {{user.tel}}</p>
+      <p>Mail: {{user.mail}}</p>
+      <strong>Roles:</strong>
+      <ul>
+        <li *ngFor="let role of currentUser.roles">
+          {{ role }}
+        </li>
+      </ul>
+      <ul>
+
+      </ul>
+      <h2>identifiant {{user.id}}</h2>
+    </mat-card-content>
+  </mat-card>
+</div>
+  <button (click)="openUpdate()">Mettre à jours profil</button>
+</div>
+
+<div *ngIf="!isLoggedIn">
+  <app-connexion-form></app-connexion-form>
+</div>
+
+

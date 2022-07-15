@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h1> Attribuer Role : </h1>
+
+  <h2> Role actuelle de l'utilisateurs</h2>
+  <ul>
+    <li *ngFor="let role of roles">
+      {{ role.name }}
+    </li>
+  </ul>
+
+  <form [formGroup]="form" (ngSubmit)="submit(form)">
+    <div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Roles à ajouter</mat-label>
+        <mat-select matInput formControlName="role" required>
+          <mat-option *ngIf="!isUser" value="user">Utilisateur</mat-option>
+          <mat-option *ngIf="!isTech" value="tech">Technicien</mat-option>
+          <mat-option *ngIf="!isAdmin" value="admin">Administrateur</mat-option>
+        </mat-select>
+        <mat-error>Champs requis</mat-error>
+      </mat-form-field>
+
+    </div>
+    <button mat-raised-button color="primary">Enregistrer</button>
+  </form>

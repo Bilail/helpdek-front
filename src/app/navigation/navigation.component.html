@@ -1,0 +1,55 @@
+<mat-sidenav-container class="sidenav-container" >
+  <mat-sidenav *ngIf="isLoggedIn" #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a  class="nav-link" routerLink="Dashboard">Admin Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showTechBoard || showAdminBoard">
+        <a class="nav-link" routerLink="DashboardTech">Tech Board</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a  class="nav-link" routerLink="DashboardUser">User Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a  class="nav-link" routerLink="Utilisateurs">Utilisateurs</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a  class="nav-link" routerLink="Profil">Profil</a>
+      </li>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <!--<button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> -->
+      <span>Heldpdesk - Gestion d'incident</span>
+
+      <div class="example-button-row">
+        <button *ngIf="isLoggedIn" mat-raised-button color="primary"   (click)="openDialog()">Créer Incident</button>
+        <button *ngIf="isLoggedIn" mat-raised-button color="primary"  (click)="logout()">Deconnexion</button>
+      </div>
+
+      <!-- <button *ngIf="isLoggedIn" mat-raised-button color="primary" class="headbutton"  (click)="openDialog()">Créer Incident</button>
+
+          <a *ngIf="isLoggedIn" href class="nav-link" (click)="logout()">Deconnexion</a> -->
+
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+    <footer>
+
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

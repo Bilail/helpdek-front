@@ -1,0 +1,50 @@
+<div class="container">
+
+  <h1> Mettre à jours un ticket </h1>
+
+  <form [formGroup]="form" (ngSubmit)="create(form)">
+    <div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Titre</mat-label>
+        <input matInput formControlName="titre" required>
+        <mat-error>Champs requis</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Demandeur</mat-label>
+        <input matInput formControlName="createur" required>
+        <mat-error>Champs requis</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Categorie</mat-label>
+
+        <mat-select matInput formControlName="categorie" required>
+          <mat-option value="Logiciel">Logiciel</mat-option>
+          <mat-option value="Matériel">Matériel</mat-option>
+          <mat-option value="Réseaux">Réseaux</mat-option>
+        </mat-select>
+        <mat-error>Champs requis</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Description</mat-label>
+        <textarea cdkTextareaAutosize cdkAutosizeMinRows="5"
+                  matInput placeholder="Description" formControlName="description" required></textarea>
+        <mat-error>Champs requis</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <input type="file" name="fichier" accept="image/*, .pdf" multiple>
+    </div>
+
+
+    <button mat-raised-button color="primary">Créer</button>
+  </form>

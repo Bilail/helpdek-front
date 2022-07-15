@@ -1,0 +1,20 @@
+<div class="container">
+
+  <h1> Attribuer l'incident {{incidentId}} à : </h1>
+
+  <form [formGroup]="form" (ngSubmit)="submit(form)">
+    <div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Technicien</mat-label>
+        <mat-select matInput formControlName="tech" required>
+        <mat-option *ngFor="let tech of techs" [value]="tech.id">
+          {{tech.nom}} {{tech.prenom}}
+        </mat-option>
+        </mat-select>
+        <mat-error>Champs requis</mat-error>
+      </mat-form-field>
+
+    </div>
+    <button mat-raised-button color="primary">Attribuer</button>
+  </form>
+

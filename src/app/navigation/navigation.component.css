@@ -1,0 +1,40 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.headbutton{
+  position: absolute;
+  right :10px;
+}
+
+a {
+  color : white;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 250px;
+  position: absolute;
+  right: 10px;
+}
+
+button {
+  margin-right: 5px;
+  align-content: center;
+align-items: center;
+}
+

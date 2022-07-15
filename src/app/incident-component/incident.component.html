@@ -1,0 +1,9 @@
+<div class="incident-card" [ngClass]="{open: incident.status === 'Ouvert'}">
+  <h2>{{ incident.titre }}</h2>
+  <p>{{ incident.description }}</p>
+  <p> status : {{incident.status}}</p>
+  <p>
+    <button (click)="onClickStatus()"> {{ buttonText }} </button>
+    <button (click)="onViewIncident()">Voir</button>
+  </p>
+</div>

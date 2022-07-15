@@ -1,0 +1,16 @@
+<div class="container">
+
+  <h1> Ajouter Description Problème {{incidentId}} </h1>
+
+  <form [formGroup]="form" (ngSubmit)="create(form)">
+    <div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="problem" required>
+        <mat-error>Champs requis</mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary">Enregistrer</button>
+  </form>
+
+</div>
