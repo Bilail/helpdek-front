@@ -69,8 +69,8 @@ export class UpdateIncidentFormComponent implements OnInit {
     )
 
     this.form.reset();
-    this.router.navigateByUrl(`incident/${this.incident.id}`);
-    console.log("creer")
+    window.location.reload();
+
 
 
   }

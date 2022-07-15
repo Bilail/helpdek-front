@@ -49,3 +49,7 @@ mat-tab-group {
 .example-button-row {
   display: table-cell;
 }
+
+.textcentrer {
+  text-align: center;
+}

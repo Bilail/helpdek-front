@@ -54,3 +54,12 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+mat-form-field{
+  width: 380px;
+}

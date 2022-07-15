@@ -53,6 +53,7 @@ import { UpdateIncidentFormComponent } from './forms/update-incident-form/update
 import { AttribueIncidentFormComponent } from './forms/attribue-incident-form/attribue-incident-form.component';
 import { RoleUpdateFormComponent } from './forms/role-update-form/role-update-form.component';
 import { UpdateProfilFormComponent } from './forms/update-profil-form/update-profil-form.component';
+import { ResetPswFormComponent } from './forms/reset-psw-form/reset-psw-form.component';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { UpdateProfilFormComponent } from './forms/update-profil-form/update-pro
     AttribueIncidentFormComponent,
     RoleUpdateFormComponent,
     UpdateProfilFormComponent,
+    ResetPswFormComponent,
 
 
   ],

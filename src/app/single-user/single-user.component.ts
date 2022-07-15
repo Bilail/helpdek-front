@@ -36,6 +36,7 @@ export class SingleUserComponent implements OnInit {
   roles! : Role[];
   private roles_token! : string[];
   isLoggedIn = false;
+  username! : string;
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.token.getToken();
@@ -44,6 +45,7 @@ export class SingleUserComponent implements OnInit {
       const user = this.token.getUser();
       this.roles_token = user.roles;
       this.showAdminBoard = this.roles_token.includes('ROLE_ADMIN');
+      this.username = this.token.getUser().username;
     }
 
 

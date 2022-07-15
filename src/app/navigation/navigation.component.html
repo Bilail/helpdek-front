@@ -35,8 +35,8 @@
       <span>Heldpdesk - Gestion d'incident</span>
 
       <div class="example-button-row">
-        <button *ngIf="isLoggedIn" mat-raised-button color="primary"   (click)="openDialog()">Créer Incident</button>
-        <button *ngIf="isLoggedIn" mat-raised-button color="primary"  (click)="logout()">Deconnexion</button>
+        <button *ngIf="isLoggedIn" mat-raised-button color="primary"   (click)="openDialog()"><mat-icon>add</mat-icon></button>
+        <button *ngIf="isLoggedIn" mat-raised-button color="primary"  (click)="logout()"><mat-icon>logout</mat-icon></button>
       </div>
 
       <!-- <button *ngIf="isLoggedIn" mat-raised-button color="primary" class="headbutton"  (click)="openDialog()">Créer Incident</button>

@@ -50,4 +50,20 @@ export class ProfilComponent implements OnInit {
     });
   }
 
+  openPasswordUpdate(): void {
+    const dialogRef = this.dialog.open(UpdateProfilFormComponent, {
+      width: '500px',
+
+    });
+
+    dialogRef.componentInstance.userId = this.user.id;
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+
+
+    });
+  }
+
 }

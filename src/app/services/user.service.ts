@@ -54,6 +54,17 @@ export class UserService {
     this.HttpClient.get(this.apiUrl+"role/"+id+"/"+role).subscribe();
   }
 
+  updateProfil(id : number, bureau : string, mail : string, tel : string){
+    this.HttpClient.get(this.apiUrl+"update/"+
+      id
+      +"/"+ bureau
+      +"/"+ mail
+      +"/"+ tel).subscribe()
+  }
+
+  updatePassword(id : number, psw : string){
+    this.HttpClient.get(this.apiUrl + 'update/psw/'+id+'/'+psw).subscribe();
+  }
 
   /*public create_user(f : FormGroup){
 

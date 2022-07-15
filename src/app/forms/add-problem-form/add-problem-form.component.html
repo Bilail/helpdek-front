@@ -6,7 +6,8 @@
     <div>
       <mat-form-field appearance="legacy">
         <mat-label>Description</mat-label>
-        <input matInput formControlName="problem" required>
+        <textarea cdkTextareaAutosize cdkAutosizeMinRows="5"
+                  matInput placeholder="Description" formControlName="problem" required></textarea>
         <mat-error>Champs requis</mat-error>
       </mat-form-field>
     </div>

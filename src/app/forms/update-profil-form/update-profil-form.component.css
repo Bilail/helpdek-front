@@ -49,3 +49,7 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+mat-form-field{
+  width: 380px;
+}

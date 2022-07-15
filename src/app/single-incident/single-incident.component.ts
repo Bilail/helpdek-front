@@ -35,6 +35,7 @@ export class SingleIncidentComponent implements OnInit {
   showTechBoard = false;
   attribue = false;
   enAttente = false;
+  enCours = false;
   private roles! : string[];
   showButtonStatus = true;
 
@@ -49,8 +50,6 @@ export class SingleIncidentComponent implements OnInit {
                 private location: Location) { }
 
   prendre(){
-
-
     if(//this.buttonText = "Prendre en Charge"
       this.incident.status == "En attente" ){
       this.incidentService.prendre_en_charge(this.token.getUser().id, this.incident.id);
@@ -66,6 +65,10 @@ export class SingleIncidentComponent implements OnInit {
       this.incidentService.valider(this.incident.id)
       window.location.reload();
       }
+    }
+
+    relancer(){
+      //this.incidentService.relancer();
     }
 
 
@@ -87,6 +90,7 @@ export class SingleIncidentComponent implements OnInit {
     this.incidentService.getIdIncident(incidentId).subscribe(data =>{
       this.incident = data;
       this.enAttente = (this.incident.status == "En attente")
+      this.enCours = (this.incident.status == "En cours")
       console.log("createur",this.incident.createur )
 
       if(this.incident.en_charge == null){

@@ -126,10 +126,13 @@
 
 
       <div class="form-group">
-        <button class="btn btn-primary btn-block">S'inscrire'</button>
+        <button class="btn btn-primary btn-block">S'inscrire</button>
       </div>
+
       <div>
-        <a routerLink="/connexion">se connecter</a>
+        <button class="btn btn-primary btn-block" routerLink="/connexion">
+          Se connecter
+        </button>
       </div>
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
         Signup failed!<br />{{ errorMessage }}

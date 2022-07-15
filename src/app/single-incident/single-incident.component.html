@@ -1,9 +1,10 @@
 <div class="incident-card" *ngIf="isLoggedIn">
-  <h2>{{ incident.titre }}</h2>
+  <h2> {{incident.id}} : {{ incident.titre }} |   {{ incident.categorie}} </h2>
 
   <div class="example-button-row">
   <button mat-icon-button (click)="retour()">  <mat-icon>arrow_back</mat-icon></button>
-  <button mat-icon-button  *ngIf="enAttente" (click)="delete()"> <mat-icon>delete</mat-icon>Supprimer</button>
+  <button mat-icon-button  *ngIf="enAttente" (click)="delete()"> <mat-icon>delete</mat-icon></button>
+    <button mat-icon-button (click)="openUpdate()"><mat-icon>edit</mat-icon></button>
   </div>
 
   <mat-grid-list cols="2" rowHeight="2:1">
@@ -18,49 +19,43 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-       <mat-card>
+      <div class="colonne">
+      <mat-card>
         <mat-card-content>
-          <p *ngIf="incident.en_charge">Personne en charge : {{ charge.nom}} {{ charge.prenom}}; </p>
-          <p> status : {{incident.status}}</p>
-
-          <p *ngIf="attribue">
-            <button *ngIf="showAdminBoard" class="b" (click)="openAttribue()"> Attribuer l'incident</button>
-          </p>
-          <p *ngIf="(showAdminBoard || showTechBoard) && showButtonStatus ">
-            <button class="b" (click)="prendre()">{{ buttonText }}</button>
-          </p>
+          <p class="textcentrer"> status : {{incident.status}}</p>
         </mat-card-content>
       </mat-card>
+        <p *ngIf="incident.en_charge">Personne en charge : {{ charge.nom}} {{ charge.prenom}}; </p>
+
+        <p *ngIf="attribue">
+          <button *ngIf="showAdminBoard" class="b" (click)="openAttribue()"> Attribuer l'incident</button>
+        </p>
+        <p *ngIf="(showAdminBoard || showTechBoard) && showButtonStatus ">
+          <button class="b" (click)="prendre()">{{ buttonText }}</button>
+        </p>
+        </div>
+
     </mat-grid-tile>
 
   </mat-grid-list>
 
   <p *ngIf="incident.date_of_creation">Mis en ligne le {{ incident.date_of_creation}}</p>
   <!-- <p>Dernière modification le {{ incident.lastModif}}</p> -->
-  <mat-divider></mat-divider>
-  <p> categorie : {{ incident.categorie}}</p>
-  <h3>Description : </h3>
-  <p> {{ incident.description }}</p>
-
-  <mat-divider></mat-divider>
-
-
-
-  <button  class="b" (click)="openUpdate()">Mettre à jours le Ticket</button>
-
-
 
 
 </div>
 <div *ngIf="isLoggedIn">
 <mat-tab-group >
+  <mat-tab label="Description">
+    <p> {{ incident.description }}</p>
+  </mat-tab>
   <mat-tab label="Diagnostic">
     <p *ngIf="diagnostic.problem">{{diagnostic.problem}}</p>
-    <button  class="b" *ngIf="showAdminBoard || showTechBoard" (click)="openAddProblem()">Ajouter Diagnostic</button>
+    <button  class="b" *ngIf="(showAdminBoard || showTechBoard) && enCours" (click)="openAddProblem()">Ajouter Diagnostic</button>
   </mat-tab>
   <mat-tab label="Solution">
     <p *ngIf="diagnostic.solution">{{diagnostic.solution}}</p>
-    <button  class="b" *ngIf="showAdminBoard || showTechBoard" (click)="openAddSolution()">Ajouter Solution</button>
+    <button  class="b" *ngIf="(showAdminBoard || showTechBoard) && enCours" (click)="openAddSolution()">Ajouter Solution</button>
   </mat-tab>
 
   <mat-tab label="Pièce jointe">  </mat-tab>

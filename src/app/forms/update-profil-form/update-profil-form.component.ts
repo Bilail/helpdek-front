@@ -46,7 +46,7 @@ export class UpdateProfilFormComponent implements OnInit {
 
 
       this.form = this._formBuilder.group({
-        bureau : [this.user.id, [Validators.required]],
+        bureau : [this.user.bureau, [Validators.required]],
         telephone : [this.user.tel, [Validators.required]],
         mail : [this.user.mail,[Validators.required]],
       })
@@ -56,16 +56,10 @@ export class UpdateProfilFormComponent implements OnInit {
 
   }
   create(form: FormGroup){
-    alert('Succes'+JSON.stringify(form.value,null,4));
-    this.HttpClient.get(this.apiUrl+"update/"+
-      this.userId
-      +"/"+ form.get('bureau')?.value
-      +"/"+ form.get('mail')?.value
-      +"/"+ form.get('mail')?.value).subscribe(   )
-
+    this.userService.updateProfil(this.userId,form.get('bureau')?.value, form.get('telephone')?.value,form.get('mail')?.value )
 
     this.form.reset();
-    //this.router.navigateByUrl(`incident/${this.incident.id}`);
+    window.location.reload();
     console.log("creer")
 
 

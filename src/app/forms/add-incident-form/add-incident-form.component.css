@@ -11,3 +11,7 @@ mat-card-title{
 
 .mat-card{
 }
+
+mat-form-field{
+  width: 380px;
+}

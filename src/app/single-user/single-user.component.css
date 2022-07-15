@@ -71,8 +71,12 @@ button {
 }
 
 mat-card {
-
+  margin: 10px;
+  padding: 10px;
 }
 
+.colonne{
+  display: inline-grid;
+}
 
 

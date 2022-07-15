@@ -12,9 +12,9 @@
     <mat-card-subtitle>{{user.mail}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
+    <p>Nom d'utilisateur : {{user.username}}</p>
     <p>Bureau: {{user.bureau}}</p>
     <p>Télephone: {{user.tel}}</p>
-    <p>Mail: {{user.mail}}</p>
     <p>Role: </p>
     <ul>
       <li *ngFor="let role of roles">
