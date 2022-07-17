@@ -16,6 +16,7 @@ import {TokenStorageService} from "../services/token-storage.service";
 import {UpdateIncidentFormComponent} from "../forms/update-incident-form/update-incident-form.component";
 import {AttribueIncidentFormComponent} from "../forms/attribue-incident-form/attribue-incident-form.component";
 import { Location } from '@angular/common';
+import {ConfirmationDeleteFormComponent} from "../forms/confirmation-delete-form/confirmation-delete-form.component";
 
 @Component({
   selector: 'app-single-incident',
@@ -24,6 +25,7 @@ import { Location } from '@angular/common';
 })
 export class SingleIncidentComponent implements OnInit {
   buttonText! : string
+  buttonIcon! : string
 
 
   incident! : Incident;
@@ -36,6 +38,8 @@ export class SingleIncidentComponent implements OnInit {
   attribue = false;
   enAttente = false;
   enCours = false;
+  termine = false;
+  valide = false;
   private roles! : string[];
   showButtonStatus = true;
 
@@ -91,6 +95,9 @@ export class SingleIncidentComponent implements OnInit {
       this.incident = data;
       this.enAttente = (this.incident.status == "En attente")
       this.enCours = (this.incident.status == "En cours")
+      this.termine = (this.incident.status == "Terminé")
+      this.valide = (this.incident.status == "Validé")
+
       console.log("createur",this.incident.createur )
 
       if(this.incident.en_charge == null){
@@ -98,14 +105,20 @@ export class SingleIncidentComponent implements OnInit {
       }
 
       if (this.incident.status == "En attente"){
-        this.buttonText = "Prendre en Charge"
+        this.buttonIcon = "pan_tool"
+        this.buttonText = "Prendre en charge"
       }
       /*else if  (this.incident.status == "En cours"){
         this.buttonText = "Terminer"
       }*/
       else if (this.incident.status == "Terminé"){
+        if(this.roles.includes('ROLE_ADMIN')){
         this.showButtonStatus = true;
-        this.buttonText = "Valider"
+        this.buttonIcon = "thumb_up"
+        this.buttonText = "Valider la solution"}
+        else {
+          this.showButtonStatus = false;
+        }
       }
       else {
         this.showButtonStatus = false;
@@ -174,10 +187,6 @@ export class SingleIncidentComponent implements OnInit {
 
     });
   }
-  delete(){
-      this.incidentService.deleteIncident(this.incident.id);
-      this.router.navigateByUrl(`DashboardUser`);
-  }
 
 
   openAttribue() {
@@ -196,6 +205,20 @@ export class SingleIncidentComponent implements OnInit {
 
   retour() {
     this.location.back();
+  }
+
+  openDelete(): void {
+    const dialogRef = this.dialog.open(ConfirmationDeleteFormComponent, {
+      width: '500px',
+
+    });
+
+    dialogRef.componentInstance.incidentId = this.incident.id;
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
 
 

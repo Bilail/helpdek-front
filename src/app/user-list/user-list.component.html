@@ -1,3 +1,15 @@
+
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand">Liste des utilisateurs</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+  </form>
+</nav>
+
+
+
+
 <table mat-table [dataSource]="userlist" *ngIf="showAdminBoard" >
 
   <ng-container matColumnDef="Id">
@@ -16,14 +28,11 @@
     <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="Role">
-    <th mat-header-cell *matHeaderCellDef> Role </th>
-    <td mat-cell *matCellDef="let element"> {{element.role}} </td>
-  </ng-container>
+
 
   <ng-container matColumnDef="Actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
-    <td mat-cell *matCellDef="let element">  <button (click)="ViewUser(element.id)">Voir</button>
+    <td mat-cell *matCellDef="let element">  <button (click)="ViewUser(element.id)"><mat-icon>manage_accounts</mat-icon></button>
 
 
   </ng-container>

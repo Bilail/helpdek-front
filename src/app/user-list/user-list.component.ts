@@ -13,7 +13,7 @@ import {TokenStorageService} from "../services/token-storage.service";
 })
 export class UserListComponent implements OnInit {
 
-  displayedColumns: string[] = ['Id', 'Nom', 'Prenom','Role', 'Actions'];
+  displayedColumns: string[] = ['Id', 'Nom', 'Prenom', 'Actions'];
   userlist! : User[]
 
   constructor(private userService : UserService,

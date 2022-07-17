@@ -22,6 +22,9 @@ export class SingleUserComponent implements OnInit {
   user! : User;
   incidentTab! :  Incident[];
   showAdminBoard = false;
+  showAdmin = false;
+  showTech = false;
+  showUser= false;
 
   displayedColumns: string[] = ['Id', 'Titre', 'Createur','Status', 'Actions'];
 
@@ -65,6 +68,17 @@ export class SingleUserComponent implements OnInit {
 
       this.userService.getUserRole(userId).subscribe(r => {
         this.roles = r;
+        for(var role of this.roles){
+          if(role.name == 'ROLE_ADMIN'){
+            this.showAdmin = true;
+          }
+          if(role.name == 'ROLE_TECH'){
+            this.showTech = true;
+          }
+          if(role.name == 'ROLE_USER'){
+            this.showUser = true;
+          }
+        }
       })
 
     });

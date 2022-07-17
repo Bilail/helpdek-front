@@ -54,6 +54,7 @@ import { AttribueIncidentFormComponent } from './forms/attribue-incident-form/at
 import { RoleUpdateFormComponent } from './forms/role-update-form/role-update-form.component';
 import { UpdateProfilFormComponent } from './forms/update-profil-form/update-profil-form.component';
 import { ResetPswFormComponent } from './forms/reset-psw-form/reset-psw-form.component';
+import { ConfirmationDeleteFormComponent } from './forms/confirmation-delete-form/confirmation-delete-form.component';
 
 
 @NgModule({
@@ -86,6 +87,7 @@ import { ResetPswFormComponent } from './forms/reset-psw-form/reset-psw-form.com
     RoleUpdateFormComponent,
     UpdateProfilFormComponent,
     ResetPswFormComponent,
+    ConfirmationDeleteFormComponent,
 
 
   ],

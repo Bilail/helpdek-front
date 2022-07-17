@@ -1,33 +1,55 @@
 <div class="user-card" *ngIf="showAdminBoard">
 
-  <button mat-icon-button (click)="retour()">  <mat-icon>arrow_back</mat-icon> Retour</button>
+  <button mat-icon-button (click)="retour()">  <mat-icon>arrow_back</mat-icon> </button>
 
 <div class="user-card">
-<mat-card class="card">
-  <mat-card-header>
-    <div mat-card-avatar>
-      <img >
-    </div>
-    <mat-card-title>{{user.nom}} {{user.prenom}}</mat-card-title>
-    <mat-card-subtitle>{{user.mail}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Nom d'utilisateur : {{user.username}}</p>
-    <p>Bureau: {{user.bureau}}</p>
-    <p>Télephone: {{user.tel}}</p>
-    <p>Role: </p>
-    <ul>
-      <li *ngFor="let role of roles">
-        {{ role.name }}
-      </li>
-    </ul>
-    <p>
-      <button class="b" (click)="openRole()">Mettre à jours le Role</button>
-    </p>
+  <div class="card border-secondary mb-3"   >
+    <div class="card-header text-center text-secondary"  > <strong>{{user.nom}} {{user.prenom}}</strong>
+      <p class="card-text">
 
-    <h2>identifiant {{user.id}}</h2>
-  </mat-card-content>
-</mat-card>
+        <small class="text-muted" *ngIf="showAdmin">Administrateur</small>
+        <small class="text-muted" *ngIf="showTech">Technicien</small>
+        <small class="text-muted" *ngIf="showUser">Employé</small>
+
+      </p>
+    </div>
+    <div class="card-body text-secondary" >
+      <div class="table-responsive">
+        <table class="table table-responsive-xl table-sm table-hover table-borderless">
+          <tbody>
+          <tr>
+            <th>identifiant</th>
+            <td >{{user.id}}</td>
+          </tr>
+          <tr>
+            <th>nom d'utilisateur</th>
+            <td >{{user.username}}</td>
+          </tr>
+
+          <tr>
+            <th>Bureau</th>
+            <td >{{user.bureau}}</td>
+          </tr>
+          <tr>
+            <th>Tel</th>
+            <td >{{user.tel}}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td >{{user.mail}}</td>
+          </tr>
+
+
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <div class="card-footer leftbutton border-secondary" data-toggle="tooltip" data-placement="bottom" title="mettre à jour le rôle"><button mat-icon-button (click)="openRole()"><mat-icon>badge</mat-icon></button></div>
+  </div>
+
 </div>
 
 <h1>En Charge</h1>

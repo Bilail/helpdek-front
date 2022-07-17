@@ -8,6 +8,8 @@ import {IncidentService} from "../../services/incident.service";
 import {Incident} from "../../models/Incident";
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../../services/token-storage.service";
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-add-incident-form',
@@ -19,8 +21,10 @@ export class AddIncidentFormComponent implements OnInit {
   private apiUrl = 'http://localhost:8080/api/incident/';
 
   incident! : Incident;
+  user! : User;
 
-  constructor(private _formBuilder: FormBuilder,
+  constructor(private userService : UserService,
+              private _formBuilder: FormBuilder,
               private incidentService : IncidentService,
               private HttpClient : HttpClient,
               private router:Router,
@@ -34,13 +38,26 @@ export class AddIncidentFormComponent implements OnInit {
 
 
   ngOnInit(): void {
+    /*this.userService.getUserbyId(this.token.getUser().id).subscribe(data => {
+      this.user = data;
     this.form = this._formBuilder.group({
       titre : [null, [Validators.required]],
       description : [null,[Validators.required]],
       createur : [this.token.getUser().id,[Validators.required]],
+      createur_nom : [this.user.nom +' '+this.user.prenom,[Validators.required]],
       categorie : [null,[Validators.required]],
       status : ["En attente",[Validators.required]],
       date_of_creation : [new Date(),[Validators.required]]
+    })*/
+
+      this.form = this._formBuilder.group({
+        titre : [null, [Validators.required]],
+        description : [null,[Validators.required]],
+        createur : [this.token.getUser().id,[Validators.required]],
+        createur_nom : ['bilail',[Validators.required]],
+        categorie : [null,[Validators.required]],
+        status : ["En attente",[Validators.required]],
+        date_of_creation : [new Date(),[Validators.required]]
     })
   }
   create(form: FormGroup){

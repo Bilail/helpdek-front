@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1> Mettre à jours un ticket </h1>
+  <h1> Modifier un ticket </h1>
 
   <form [formGroup]="form" (ngSubmit)="create(form)">
     <div>
@@ -21,7 +21,7 @@
 
     <div>
       <mat-form-field appearance="legacy">
-        <mat-label>Categorie</mat-label>
+        <mat-label>Catégorie</mat-label>
 
         <mat-select matInput formControlName="categorie" required>
           <mat-option value="Logiciel">Logiciel</mat-option>
@@ -45,6 +45,6 @@
       <input type="file" name="fichier" accept="image/*, .pdf" multiple>
     </div>
 
-
-    <button mat-raised-button color="primary">Mettre à jours</button>
+<p></p>
+    <button mat-raised-button color="primary"><mat-icon>edit_note</mat-icon>Mettre à jour</button>
   </form>

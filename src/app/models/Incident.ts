@@ -3,7 +3,8 @@ export class Incident {
   titre! : string;
   description! : string;
   createur! : number;
-  date_of_creation! : Date;
+  createur_nom! : string;
+  creation! : Date;
   lastModif! : Date;
   status! : string;
   categorie! : string;
@@ -15,7 +16,7 @@ export class Incident {
     this.titre = title;
     this.description = description;
     this.createur = creator;
-    this.date_of_creation = new Date();
+    //this.date_of_creation = new Date();
     this.lastModif = new Date();
     this.status = "En attente";
     this.categorie = categorie

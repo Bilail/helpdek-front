@@ -73,7 +73,7 @@ export class IncidentService {
       this.getStatIncidentsbyStatus("Validé").subscribe(data => {this.nb_valide = data; })
 
       return of([
-                  { title: "Ticket en Attente", value: this.nb_att, color: "primary",icon: "payments" },
+                  { title: "Ticket en Attente", value: this.nb_att, color: "primary",icon: "hourglass_empty" },
                   { title: "Ticket en cours", value: this.nb_cours,  color: "warn",icon: "payments"},
                   { title: "Ticket Terminé ", value: this.nb_termine, color: "accent", icon: "payments"},
                   { title: "Ticket Validé", value: this.nb_valide,  color: "primary",icon: "payments" }

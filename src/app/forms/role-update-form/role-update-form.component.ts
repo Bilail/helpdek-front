@@ -32,7 +32,7 @@ export class RoleUpdateFormComponent implements OnInit {
         if(role.name == 'ROLE_TECH'){
           this.isTech = true;
         }
-        if(role.name == 'ROLE_User'){
+        if(role.name == 'ROLE_USER'){
           this.isUser = true;
         }
       }

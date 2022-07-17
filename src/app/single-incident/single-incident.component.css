@@ -46,10 +46,25 @@ mat-tab-group {
   font-weight: 500;
 }
 
+
 .example-button-row {
   display: table-cell;
 }
 
 .textcentrer {
   text-align: center;
+}
+
+p {
+  margin : 5px;
+}
+
+.form-control
+{
+  font-size: 20px;
+  font-weight: bold;
+}
+.input-group-text
+{
+  font-size: 20px;
 }

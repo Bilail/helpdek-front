@@ -79,4 +79,7 @@ mat-card {
   display: inline-grid;
 }
 
-
+.leftbutton{
+  display: flex;
+  flex-direction: row-reverse;
+}

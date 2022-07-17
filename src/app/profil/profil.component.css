@@ -26,3 +26,7 @@ mat-card {
   /*box-shadow: lightgray 4px 4px 20px;*/
 }
 
+.leftbutton{
+  display: flex;
+  flex-direction: row-reverse;
+}

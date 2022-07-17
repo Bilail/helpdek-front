@@ -1,45 +1,154 @@
+
 <div class="incident-card" *ngIf="isLoggedIn">
-  <h2> {{incident.id}} : {{ incident.titre }} |   {{ incident.categorie}} </h2>
+<!--  <h2> {{incident.id}} : {{ incident.titre }} |   {{ incident.categorie}} </h2>  -->
+
+
+  <div class="col-auto">
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text">{{incident.id}}</div>
+      </div>
+      <input type="text" class="form-control text-center" id="inlineFormInputGroup " value="{{ incident.titre }}" readonly>
+      <div class="input-group-prepend">
+        <div class="input-group-text">{{ incident.categorie}}</div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="example-button-row">
   <button mat-icon-button (click)="retour()">  <mat-icon>arrow_back</mat-icon></button>
-  <button mat-icon-button  *ngIf="enAttente" (click)="delete()"> <mat-icon>delete</mat-icon></button>
-    <button mat-icon-button (click)="openUpdate()"><mat-icon>edit</mat-icon></button>
+  <button mat-icon-button data-toggle="tooltip" data-placement="bottom" title="Supprimer le ticket"  *ngIf="enAttente" (click)="openDelete()"> <mat-icon>delete</mat-icon></button>
+    <button data-toggle="tooltip" data-placement="bottom" title="Modifier le ticket" mat-icon-button (click)="openUpdate()"><mat-icon>edit</mat-icon></button>
+
+      <button data-toggle="tooltip" data-placement="bottom" title="Attribuer à un technicien" *ngIf="showAdminBoard && attribue" mat-icon-button (click)="openAttribue()"> <mat-icon>person_add</mat-icon></button>
+    <button mat-icon-button data-toggle="tooltip" data-placement="bottom" title="{{buttonText}}" *ngIf="(showAdminBoard || showTechBoard) && showButtonStatus " (click)="prendre()"><mat-icon>{{ buttonIcon }}</mat-icon></button>
+    <button mat-icon-button  *ngIf="enCours" data-toggle="tooltip" data-placement="bottom" title="Relancer" > <mat-icon>refresh</mat-icon></button>
+    <button mat-icon-button  *ngIf="termine" data-toggle="tooltip" data-placement="bottom" title="Refuser la solution"> <mat-icon>thumb_down</mat-icon></button>
+
   </div>
 
   <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile>
-    <mat-card>
-      <mat-card-content>
+
+        <div class="card border-secondary mb-3"   >
+          <div class="card-header text-center text-secondary"  > <strong>Demandeur</strong></div>
+          <div class="card-body text-secondary" >
+            <div class="table-responsive">
+              <table class="table table-responsive-xl table-sm table-hover table-borderless">
+                <tbody>
+                <tr>
+                  <th>Nom & Prénom</th>
+                  <td >{{creat.nom}} {{creat.prenom}}</td>
+                </tr>
+
+                <tbody>
+                <tr>
+                  <th>Bureau</th>
+                  <td >{{creat.bureau}}</td>
+                </tr>
+                <tr>
+
+                  <th>Tel</th>
+                  <td >{{creat.tel}}</td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+<!--
+        <div class="table-responsive">
+            <table class="table table-responsive-xl table-sm table-hover table-borderless">
+            <thead>
+            <tr>
+              <th>Créateur</th>
+                 <td >{{creat.nom}} {{creat.prenom}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>Bureau</th>
+                 <td >{{creat.bureau}}</td>
+            </tr>
+            <tr>
+
+              <th>Tel</th>
+                <td >{{creat.tel}}</td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+-->
+<!--
         <p>Créateur : {{creat.nom}} {{creat.prenom}}</p>
         <p>Bureau : {{creat.bureau}}</p>
         <p>Téléphone : {{creat.tel}}</p>
-      </mat-card-content>
-    </mat-card>
+  -->
+
+
+
+
     </mat-grid-tile>
 
     <mat-grid-tile>
       <div class="colonne">
-      <mat-card>
+    <!--  <mat-card>
         <mat-card-content>
-          <p class="textcentrer"> status : {{incident.status}}</p>
+          <div *ngIf="enAttente" class="text-center"><mat-icon>hourglass_empty</mat-icon></div>
+          <div *ngIf="enCours" class="text-center"><mat-icon>update</mat-icon></div>
+          <div *ngIf="termine" class="text-center"><mat-icon>done</mat-icon></div>
+          <div *ngIf="valide" class="text-center"><mat-icon>verified</mat-icon></div>
+          <p class="textcentrer">  <strong >{{incident.status}}</strong ></p>
         </mat-card-content>
-      </mat-card>
-        <p *ngIf="incident.en_charge">Personne en charge : {{ charge.nom}} {{ charge.prenom}}; </p>
+      </mat-card>   -->
+        <div class="card border-danger mb-3"  *ngIf="enAttente" >
+          <div class="card-header text-center text-danger"  > <strong>{{incident.status}}</strong></div>
+          <div class="card-body text-danger" >
+            <p class="card-title text-center"><mat-icon>hourglass_empty</mat-icon></p>
+          </div>
+          <div class="card-footer text-danger border-danger"><mat-icon>calendar_today</mat-icon> {{incident.creation  | date: 'dd/MM/yyyy HH:mm' }}</div>
+        </div>
 
-        <p *ngIf="attribue">
-          <button *ngIf="showAdminBoard" class="b" (click)="openAttribue()"> Attribuer l'incident</button>
-        </p>
-        <p *ngIf="(showAdminBoard || showTechBoard) && showButtonStatus ">
-          <button class="b" (click)="prendre()">{{ buttonText }}</button>
-        </p>
+        <div class="card border-warning mb-3"  *ngIf="enCours" >
+          <div class="card-header text-center text-warning"  > <strong>{{incident.status}}</strong></div>
+          <div class="card-body text-warning" >
+            <p class="card-title text-center"><mat-icon>update</mat-icon></p>
+          </div>
+          <div class="card-footer  border-warning text-warning"><mat-icon>calendar_today</mat-icon> {{incident.creation  | date: 'dd/MM/yyyy HH:mm' }}</div>
+
+        </div>
+
+        <div class="card border-primary mb-3"  *ngIf="termine" >
+          <div class="card-header text-center text-primary"  > <strong>{{incident.status}}</strong></div>
+          <div class="card-body text-primary" >
+            <p class="card-title text-center"><mat-icon>task_alt</mat-icon></p>
+          </div>
+          <div class="card-footer  border-primary text-primary"><mat-icon>calendar_today</mat-icon> {{incident.creation  | date: 'dd/MM/yyyy HH:mm' }}</div>
+
+        </div>
+
+        <div class="card border-success mb-3"  *ngIf="valide" >
+          <div class="card-header text-center text-success"  > <strong>{{incident.status}}</strong></div>
+          <div class="card-body text-success" >
+            <p class="card-title text-center"><mat-icon>verified</mat-icon></p>
+          </div>
+          <div class="card-footer  border-success text-success"><mat-icon>calendar_today</mat-icon> {{incident.creation  | date: 'dd/MM/yyyy HH:mm' }}</div>
+
+        </div>
+
+
+        <p *ngIf="incident.en_charge"><mat-icon>hail</mat-icon> en charge : <strong>{{ charge.nom}} {{ charge.prenom}} </strong></p>
+
         </div>
 
     </mat-grid-tile>
 
   </mat-grid-list>
 
-  <p *ngIf="incident.date_of_creation">Mis en ligne le {{ incident.date_of_creation}}</p>
+  <!-- <p *ngIf="incident.date_of_creation">Mis en ligne le {{ incident.date_of_creation}}</p> -->
   <!-- <p>Dernière modification le {{ incident.lastModif}}</p> -->
 
 
@@ -51,11 +160,11 @@
   </mat-tab>
   <mat-tab label="Diagnostic">
     <p *ngIf="diagnostic.problem">{{diagnostic.problem}}</p>
-    <button  class="b" *ngIf="(showAdminBoard || showTechBoard) && enCours" (click)="openAddProblem()">Ajouter Diagnostic</button>
+    <button  mat-icon-button   *ngIf="(showAdminBoard || showTechBoard) && enCours" (click)="openAddProblem()"><mat-icon>edit_note</mat-icon></button>
   </mat-tab>
   <mat-tab label="Solution">
     <p *ngIf="diagnostic.solution">{{diagnostic.solution}}</p>
-    <button  class="b" *ngIf="(showAdminBoard || showTechBoard) && enCours" (click)="openAddSolution()">Ajouter Solution</button>
+    <button mat-icon-button   *ngIf="(showAdminBoard || showTechBoard) && enCours" (click)="openAddSolution()"><mat-icon>edit_note</mat-icon></button>
   </mat-tab>
 
   <mat-tab label="Pièce jointe">  </mat-tab>
