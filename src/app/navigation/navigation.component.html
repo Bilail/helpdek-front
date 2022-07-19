@@ -1,10 +1,38 @@
 <mat-sidenav-container class="sidenav-container" >
-  <mat-sidenav *ngIf="isLoggedIn" #drawer class="sidenav" fixedInViewport
+
+  <!--
+  <mat-sidenav *ngIf="isLoggedIn"  #sidenav class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+-->
+    <mat-sidenav #sidenav  [mode]="mode.value || 'push'">
+
+
+    <mat-toolbar (click)="sidenav.toggle()">Gestion des interventions </mat-toolbar>
     <mat-nav-list>
+      <a mat-list-item [routerLink]="['Dashboard']" *ngIf="showAdminBoard">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <span mat-line>Admin Board</span>
+      </a>
+      <a mat-list-item [routerLink]="['DashboardTech']" *ngIf="showTechBoard || showAdminBoard">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <span mat-line> Tech Board</span>
+      </a>
+      <a mat-list-item [routerLink]="['DashboardUser']" *ngIf="isLoggedIn">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <span mat-line>User Board</span>
+      </a>
+      <a mat-list-item [routerLink]="['Incidents']" *ngIf="showAdminBoard">
+        <mat-icon mat-list-icon>view_list</mat-icon>
+        <span mat-line>Incidents</span>
+      </a>
+      <a mat-list-item [routerLink]="['Utilisateurs']" *ngIf="showAdminBoard">
+        <mat-icon mat-list-icon>groups</mat-icon>
+        <span mat-line>Utilisateurs</span>
+      </a>
+
+      <!--
       <li class="nav-item" *ngIf="showAdminBoard">
         <a  class="nav-link" routerLink="Dashboard">Admin Board</a>
       </li>
@@ -20,33 +48,22 @@
       <li class="nav-item" *ngIf="showAdminBoard">
         <a  class="nav-link" routerLink="Utilisateurs">Utilisateurs</a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn">
-        <a  class="nav-link" routerLink="Profil">Profil</a>
-      </li>
+-->
     </mat-nav-list>
+
   </mat-sidenav>
+
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <!--<button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button> -->
-      <span>Heldpdesk - Gestion d'intervention</span>
 
+      <p *ngIf="isLoggedIn"><button mat-raised-button color="primary" (click)="sidenav.toggle()">Menu</button></p>
+      <p *ngIf="!isLoggedIn"><button mat-button>Heldpdesk - Gestion d'intervention</button></p>
 
       <div class="example-button-row">
         <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="Profil"><mat-icon>person</mat-icon>{{username}}</button>
         <button *ngIf="isLoggedIn" mat-raised-button color="primary" data-toggle="tooltip" data-placement="left" title="Créer Intervention"  (click)="openDialog()"><mat-icon>add</mat-icon> </button>
         <button *ngIf="isLoggedIn" mat-raised-button color="primary" data-toggle="tooltip" data-placement="left" title="Déconnexion"  (click)="logout()"><mat-icon>logout</mat-icon></button>
       </div>
-
-      <!-- <button *ngIf="isLoggedIn" mat-raised-button color="primary" class="headbutton"  (click)="openDialog()">Créer Incident</button>
-
-          <a *ngIf="isLoggedIn" href class="nav-link" (click)="logout()">Deconnexion</a> -->
 
 
     </mat-toolbar>

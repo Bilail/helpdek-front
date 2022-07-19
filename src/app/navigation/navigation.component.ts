@@ -5,6 +5,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import {AddIncidentFormComponent} from "../forms/add-incident-form/add-incident-form.component";
 import {MatDialog} from "@angular/material/dialog";
 import {TokenStorageService} from "../services/token-storage.service";
+import {FormControl} from '@angular/forms';
+import {MatDrawerMode} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-navigation',
@@ -12,6 +14,9 @@ import {TokenStorageService} from "../services/token-storage.service";
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit{
+  showFiller = true;
+  mode = new FormControl('side' as MatDrawerMode);
+  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

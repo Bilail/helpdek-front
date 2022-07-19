@@ -5,6 +5,7 @@ import {User} from "../models/User";
 import {AddSolutionFormComponent} from "../forms/add-solution-form/add-solution-form.component";
 import {MatDialog} from "@angular/material/dialog";
 import {UpdateProfilFormComponent} from "../forms/update-profil-form/update-profil-form.component";
+import {ResetPswNoverifFormComponent} from "../forms/reset-psw-noverif-form/reset-psw-noverif-form.component";
 
 @Component({
   selector: 'app-profil',
@@ -62,6 +63,20 @@ export class ProfilComponent implements OnInit {
       console.log('The dialog was closed');
 
 
+
+    });
+  }
+
+  openPassword(): void {
+    const dialogRef = this.dialog.open(ResetPswNoverifFormComponent, {
+      width: '500px',
+
+    });
+
+    dialogRef.componentInstance.userId = this.user.id;
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
 
     });
   }

@@ -24,12 +24,6 @@
               <td >{{user.username}}</td>
             </tr>
             <tr>
-              <th>mot de passe</th>
-              <td >{{password}}</td>
-            </tr>
-
-
-            <tr>
               <th>Bureau</th>
               <td >{{user.bureau}}</td>
             </tr>
@@ -50,7 +44,10 @@
         </div>
       </div>
 
-      <div class="card-footer leftbutton border-secondary" data-toggle="tooltip" data-placement="bottom" title="mettre à jour le profil"><button mat-icon-button (click)="openUpdate()"><mat-icon>edit</mat-icon></button></div>
+      <div class="card-footer leftbutton border-secondary" >
+        <button mat-icon-button (click)="openUpdate()" data-toggle="tooltip" data-placement="bottom" title="mettre à jour le profil"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="openPassword()" data-toggle="tooltip" data-placement="bottom" title="changer mot de passe"><mat-icon>password</mat-icon></button>
+      </div>
     </div>
 
 </div>
