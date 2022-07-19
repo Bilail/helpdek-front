@@ -55,6 +55,8 @@ import { RoleUpdateFormComponent } from './forms/role-update-form/role-update-fo
 import { UpdateProfilFormComponent } from './forms/update-profil-form/update-profil-form.component';
 import { ResetPswFormComponent } from './forms/reset-psw-form/reset-psw-form.component';
 import { ConfirmationDeleteFormComponent } from './forms/confirmation-delete-form/confirmation-delete-form.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import { ResetPswNoverifFormComponent } from './forms/reset-psw-noverif-form/reset-psw-noverif-form.component';
 
 
 @NgModule({
@@ -88,6 +90,7 @@ import { ConfirmationDeleteFormComponent } from './forms/confirmation-delete-for
     UpdateProfilFormComponent,
     ResetPswFormComponent,
     ConfirmationDeleteFormComponent,
+    ResetPswNoverifFormComponent,
 
 
   ],
@@ -118,6 +121,7 @@ import { ConfirmationDeleteFormComponent } from './forms/confirmation-delete-for
         HttpClientModule,
         MatTabsModule,
         MatSortModule,
+        MatStepperModule,
 
 
     ],

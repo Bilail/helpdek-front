@@ -66,6 +66,10 @@ export class UserService {
     this.HttpClient.get(this.apiUrl + 'update/psw/'+id+'/'+psw).subscribe();
   }
 
+  paswordforgot(username : string, mail : string, password : string ){
+    this.HttpClient.get(this.apiUrl + "update/psw/"+username+"/"+mail+"/"+password).subscribe();
+  }
+
   /*public create_user(f : FormGroup){
 
     let nom = f.get('nom')?.value;

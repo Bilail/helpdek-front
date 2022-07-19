@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div class="user-card">
+    <button mat-icon-button (click)="retour()">  <mat-icon>arrow_back</mat-icon></button>
+
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Vos informations</ng-template>
+      <div>
+      <mat-form-field appearance="fill">
+        <mat-label>nom d'utilisateur</mat-label>
+        <input matInput placeholder="nom d'utilisateur" formControlName="username" required>
+      </mat-form-field>
+      </div>
+      <div>
+      <mat-form-field appearance="fill">
+        <mat-label>adresse mail</mat-label>
+        <input matInput placeholder="@mail" formControlName="mail" required>
+      </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- #docregion label -->
+  <mat-step [stepControl]="secondFormGroup" label="Nouveau mot de passe">
+    <!-- #enddocregion label -->
+    <form [formGroup]="secondFormGroup">
+      <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="6 caractères minimum"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext (click)="submit()">Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Fin</ng-template>
+    <p>Si vous informations sont corrects, votre nouveau mot de passe est actif</p>
+    <div>
+      <button mat-button matStepperPrevious>Retour</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+  </div>
+</div>
+

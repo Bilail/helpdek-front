@@ -14,6 +14,7 @@ import {InscriptionFormComponent} from "./forms/inscription-form/inscription-for
 import {DashbordUserComponent} from "./dashbord-user/dashbord-user.component";
 import {DashbordTechComponent} from "./dashbord-tech/dashbord-tech.component";
 import {UpdateProfilFormComponent} from "./forms/update-profil-form/update-profil-form.component";
+import {ResetPswFormComponent} from "./forms/reset-psw-form/reset-psw-form.component";
 
 const routes : Routes = [
   {path : 'incidentlist', component: IncidentListComponent},
@@ -30,7 +31,8 @@ const routes : Routes = [
   {path : 'inscription', component : InscriptionFormComponent},
   {path : "DashboardUser", component : DashbordUserComponent},
   {path : "DashboardTech", component : DashbordTechComponent},
-  {path : "Useruptade", component : UpdateProfilFormComponent}
+  {path : "Useruptade", component : UpdateProfilFormComponent},
+  {path : "ResetPassword", component : ResetPswFormComponent}
 
 ];
 

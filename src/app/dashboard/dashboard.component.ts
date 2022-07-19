@@ -95,11 +95,10 @@ export class DashboardComponent implements OnInit {
         console.log(this.nb_att, data)
       })
 
-      this.incidentService.getStatistique().subscribe({
-        next: summaryData => {
+      this.incidentService.getStatistique().subscribe(summaryData => {
           this.miniCardData = summaryData;
         }
-      });
+      );
 
       this.incidentService.getIncidentsbyStatus("En attente").subscribe(att => {
         this.en_attente = att;

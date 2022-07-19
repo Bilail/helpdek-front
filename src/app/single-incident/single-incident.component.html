@@ -23,8 +23,8 @@
 
       <button data-toggle="tooltip" data-placement="bottom" title="Attribuer à un technicien" *ngIf="showAdminBoard && attribue" mat-icon-button (click)="openAttribue()"> <mat-icon>person_add</mat-icon></button>
     <button mat-icon-button data-toggle="tooltip" data-placement="bottom" title="{{buttonText}}" *ngIf="(showAdminBoard || showTechBoard) && showButtonStatus " (click)="prendre()"><mat-icon>{{ buttonIcon }}</mat-icon></button>
-    <button mat-icon-button  *ngIf="enCours" data-toggle="tooltip" data-placement="bottom" title="Relancer" > <mat-icon>refresh</mat-icon></button>
-    <button mat-icon-button  *ngIf="termine" data-toggle="tooltip" data-placement="bottom" title="Refuser la solution"> <mat-icon>thumb_down</mat-icon></button>
+    <button mat-icon-button  *ngIf="enCours && showAdminBoard" data-toggle="tooltip" data-placement="bottom" title="Relancer" (click)="relancer()"> <mat-icon>refresh</mat-icon></button>
+    <button mat-icon-button  *ngIf="termine && showAdminBoard" data-toggle="tooltip" data-placement="bottom" title="Refuser la solution" (click)="refusSolution()"> <mat-icon>thumb_down</mat-icon></button>
 
   </div>
 

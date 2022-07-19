@@ -73,10 +73,10 @@ export class IncidentService {
       this.getStatIncidentsbyStatus("Validé").subscribe(data => {this.nb_valide = data; })
 
       return of([
-                  { title: "Ticket en Attente", value: this.nb_att, color: "primary",icon: "hourglass_empty" },
-                  { title: "Ticket en cours", value: this.nb_cours,  color: "warn",icon: "payments"},
-                  { title: "Ticket Terminé ", value: this.nb_termine, color: "accent", icon: "payments"},
-                  { title: "Ticket Validé", value: this.nb_valide,  color: "primary",icon: "payments" }
+                  { title: "Ticket en Attente", value: this.nb_att, color: "warn",icon1: "payments" },
+                  { title: "Ticket en cours", value: this.nb_cours,  color: "amber",icon1: "payments"},
+                  { title: "Ticket Terminé", value: this.nb_termine, color: "blue", icon1: "payments"},
+                  { title: "Ticket Validé", value: this.nb_valide,  color: "success",icon1: "payments" }
                 ]);
     }
 
@@ -135,10 +135,10 @@ export class IncidentService {
     this.getStatIncidentsbyStatusByCreator("Validé", id).subscribe(data => {this.nb_valide_creat = data; })
 
     return of([
-      { title: "Ticket en Attente", value: this.nb_att_creat, color: "primary",icon: "payments" },
-      { title: "Ticket en cours", value: this.nb_cours_creat,  color: "warn",icon: "payments"},
-      { title: "Ticket Terminé ", value: this.nb_termine_creat, color: "accent", icon: "payments"},
-      { title: "Ticket Validé", value: this.nb_valide_creat,  color: "primary",icon: "payments" }
+      { title: "Ticket en Attente", value: this.nb_att_creat, color: "warn",icon: "payments" },
+      { title: "Ticket en cours", value: this.nb_cours_creat,  color: "amber",icon: "payments"},
+      { title: "Ticket Terminé", value: this.nb_termine_creat, color: "blue", icon: "payments"},
+      { title: "Ticket Validé", value: this.nb_valide_creat,  color: "success",icon: "payments" }
     ]);
   }
 
@@ -167,10 +167,10 @@ export class IncidentService {
     this.getStatIncidentsbyStatusByEncharge("Validé", id).subscribe(data => {this.nb_valide_encharge = data; })
 
     return of([
-      { title: "Ticket en Attente", value: this.nb_att_encharge, color: "primary",icon: "payments" },
-      { title: "Ticket en cours", value: this.nb_cours_encharge,  color: "warn",icon: "payments"},
-      { title: "Ticket Terminé ", value: this.nb_termine_encharge, color: "accent", icon: "payments"},
-      { title: "Ticket Validé", value: this.nb_valide_encharge,  color: "primary",icon: "payments" }
+      { title: "Ticket en Attente", value: this.nb_att_encharge, color: "warn",icon: "payments" },
+      { title: "Ticket en cours", value: this.nb_cours_encharge,  color: "amber",icon: "payments"},
+      { title: "Ticket Terminé", value: this.nb_termine_encharge, color: "blue", icon: "payments"},
+      { title: "Ticket Validé", value: this.nb_valide_encharge,  color: "success",icon: "payments" }
     ]);
   }
 
@@ -183,6 +183,18 @@ export class IncidentService {
     console.log("delete",id)
   }
 
+  commencer(id : number){
+    this.HttpClient.get(this.apiUrl+"commencer/"+id).subscribe();
+  }
+
+  relancer(id : number){
+
+    this.HttpClient.get(this.apiUrl+"relancer/"+id).subscribe();
+  }
+
+  refusSolution(id : number){
+    this.HttpClient.get(this.apiUrl+"refussolution/"+id).subscribe();
+  }
 }
 
 

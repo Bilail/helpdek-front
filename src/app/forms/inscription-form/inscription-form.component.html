@@ -2,7 +2,7 @@
   <div class="card card-container">
     <img
       id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      src="../../assets/logo.jpg"
       class="profile-img-card"
     />
     <form
@@ -12,8 +12,89 @@
       #f="ngForm"
       novalidate
     >
+      <div class="dropdown-divider"></div>
+
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            name="nom"
+            [(ngModel)]="form.nom"
+            required
+            placeholder="Nom"
+            #nom="ngModel"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            name="prenom"
+            [(ngModel)]="form.prenom"
+            required
+            placeholder="Prénom"
+            #prenom="ngModel"
+          />
+        </div>
+      </div>
+
+
+
+
+
       <div class="form-group">
-        <label for="username">Username</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          placeholder="Email"
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+          <div *ngIf="email.errors">Email est requis au bon format</div>
+          <!--<div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div> -->
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            name="bureau"
+            [(ngModel)]="form.bureau"
+            required
+            placeholder="Bureau"
+            #bureau="ngModel"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            name="bureau"
+            [(ngModel)]="form.tel"
+            required
+            placeholder="Tel"
+            #tel="ngModel"
+          />
+        </div>
+      </div>
+
+
+
+      <div class="dropdown-divider"></div>
+      <div class="form-group">
+
         <input
           type="text"
           class="form-control"
@@ -22,64 +103,21 @@
           required
           minlength="3"
           maxlength="20"
+          placeholder="Nom d'utilisateur"
           #username="ngModel"
         />
         <div class="alert-danger" *ngIf="f.submitted && username.invalid">
-         <!-- <div *ngIf="username.errors.required">Username is required</div>
-          <div *ngIf="username.errors.minlength">
-            Username must be at least 3 characters
-          </div>
-          <div *ngIf="username.errors.maxlength">
-            Username must be at most 20 characters
-          </div> -->
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="nom">Nom</label>
-        <input
-          type="text"
-          class="form-control"
-          name="nom"
-          [(ngModel)]="form.nom"
-          required
-          #nom="ngModel"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="prenom">Prenom</label>
-        <input
-          type="text"
-          class="form-control"
-          name="prenom"
-          [(ngModel)]="form.prenom"
-          required
-          #prenom="ngModel"
-        />
-      </div>
-
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          name="email"
-          [(ngModel)]="form.email"
-          required
-          email
-          #email="ngModel"
-        />
-        <div class="alert-danger" *ngIf="f.submitted && email.invalid">
-          <!--<div *ngIf="email.errors.required">Email is required</div>
-          <div *ngIf="email.errors.email">
-            Email must be a valid email address
-          </div> -->
+          <div *ngIf="username.errors">Nom de profil requis, plus de 3 caractères</div>
+          <!-- <div *ngIf="username.errors.required">Username is required</div>
+           <div *ngIf="username.errors.minlength">
+             Username must be at least 3 characters
+           </div>
+           <div *ngIf="username.errors.maxlength">
+             Username must be at most 20 characters
+           </div> -->
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
         <input
           type="password"
           class="form-control"
@@ -87,46 +125,23 @@
           [(ngModel)]="form.password"
           required
           minlength="6"
+          placeholder="Mot de passe"
           #password="ngModel"
         />
         <div class="alert-danger" *ngIf="f.submitted && password.invalid">
-          <div *ngIf="password.errors?.['required']">Password is required</div>
+          <!--<div *ngIf="password.errors?.['required']">Password is required</div> -->
+          <div *ngIf="password.errors">Mot de passe requis, au moins 6 caractère</div>
           <!--<div *ngIf="password.errors['minlength']">
             Password must be at least 6 characters
           </div>-->
         </div>
       </div>
-
-      <div class="form-group">
-        <label for="bureau">bureau</label>
-        <input
-          type="text"
-          class="form-control"
-          name="bureau"
-          [(ngModel)]="form.bureau"
-          required
-          #bureau="ngModel"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="tel">téléphone</label>
-        <input
-          type="text"
-          class="form-control"
-          name="bureau"
-          [(ngModel)]="form.tel"
-          required
-          #tel="ngModel"
-        />
-      </div>
-
-
+      <div class="dropdown-divider"></div>
 
 
 
       <div class="form-group">
-        <button class="btn btn-primary btn-block">S'inscrire</button>
+        <button class="btn btn-secondary btn-block">S'inscrire</button>
       </div>
 
       <div>
@@ -140,6 +155,11 @@
     </form>
     <div class="alert alert-success" *ngIf="isSuccessful">
       Inscription Reussie!
+    </div>
+    <div *ngIf="isSuccessful">
+      <button class="btn btn-primary btn-block" routerLink="/connexion">
+        Se connecter
+      </button>
     </div>
   </div>
 </div>

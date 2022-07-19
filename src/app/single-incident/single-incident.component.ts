@@ -55,11 +55,17 @@ export class SingleIncidentComponent implements OnInit {
 
   prendre(){
     if(//this.buttonText = "Prendre en Charge"
-      this.incident.status == "En attente" ){
-      this.incidentService.prendre_en_charge(this.token.getUser().id, this.incident.id);
-      console.log("prendre en charge ")
+      this.incident.status == "En attente" ) {
+      if (this.incident.en_charge == null){
+        this.incidentService.prendre_en_charge(this.token.getUser().id, this.incident.id);
+    }
+    else {
+      this.incidentService.commencer(this.incident.id);
+
+    }
       window.location.reload();
       }
+
     else if (//this.buttonText = "Terminer"
       this.incident.status == "En cours" ){
       this.incidentService.terminer(this.incident.id)
@@ -72,7 +78,13 @@ export class SingleIncidentComponent implements OnInit {
     }
 
     relancer(){
-      //this.incidentService.relancer();
+      this.incidentService.relancer(this.incident.id);
+      window.location.reload();
+    }
+
+    refusSolution(){
+      this.incidentService.refusSolution(this.incident.id);
+      window.location.reload();
     }
 
 
@@ -105,8 +117,14 @@ export class SingleIncidentComponent implements OnInit {
       }
 
       if (this.incident.status == "En attente"){
-        this.buttonIcon = "pan_tool"
-        this.buttonText = "Prendre en charge"
+        if(this.incident.en_charge == null) {
+          this.buttonIcon = "pan_tool"
+          this.buttonText = "Prendre en charge"
+        }
+        else {
+          this.buttonIcon = "play_arrow"
+          this.buttonText = "Commencer"
+        }
       }
       /*else if  (this.incident.status == "En cours"){
         this.buttonText = "Terminer"

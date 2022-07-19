@@ -194,7 +194,7 @@
 
     <!--Table-->
     <mat-grid-tile [colspan]="( cardLayout | async )?.table?.cols" [rowspan]="( cardLayout | async )?.table?.rows">
-      <app-card title="Liste des incidents en attente de prise en charge">
+      <app-card title="Liste des interventions en attente de prise en charge">
     <table  mat-table [dataSource]="dataSource" matSort>
       (matSortChange)="announceSortChange($event)"
 
@@ -240,7 +240,7 @@
   <app-connexion-form></app-connexion-form>
 </div>
 
-<div *ngIf="(!showTechBoard || !showAdminBoard) && isLoggedIn">
+<div *ngIf="(!showTechBoard && !showAdminBoard) && isLoggedIn">
   Accès refusé vous n'avez pas les droits
 </div>
 

@@ -15,6 +15,9 @@
         <a  class="nav-link" routerLink="DashboardUser">User Board</a>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
+        <a class="nav-link" routerLink="Incidents">Liste des incidents</a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
         <a  class="nav-link" routerLink="Utilisateurs">Utilisateurs</a>
       </li>
       <li class="nav-item" *ngIf="isLoggedIn">
@@ -32,9 +35,11 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button> -->
-      <span>Heldpdesk - Gestion d'incident</span>
+      <span>Heldpdesk - Gestion d'intervention</span>
+
 
       <div class="example-button-row">
+        <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="Profil"><mat-icon>person</mat-icon>{{username}}</button>
         <button *ngIf="isLoggedIn" mat-raised-button color="primary" data-toggle="tooltip" data-placement="left" title="Créer Intervention"  (click)="openDialog()"><mat-icon>add</mat-icon> </button>
         <button *ngIf="isLoggedIn" mat-raised-button color="primary" data-toggle="tooltip" data-placement="left" title="Déconnexion"  (click)="logout()"><mat-icon>logout</mat-icon></button>
       </div>

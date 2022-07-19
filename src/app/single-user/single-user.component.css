@@ -83,3 +83,7 @@ mat-card {
   display: flex;
   flex-direction: row-reverse;
 }
+
+.marg {
+  margin: 10px;
+}

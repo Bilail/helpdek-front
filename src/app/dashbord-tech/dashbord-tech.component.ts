@@ -105,7 +105,7 @@ export class DashbordTechComponent implements OnInit {
         }
       });
 
-      this.incidentService.getIncidentsbyStatus("En attente").subscribe(att => {
+      this.incidentService.getIncidentByStatusAndEncharge("En attente",this.userId).subscribe(att => {
         this.en_attente = att;
         this.dataSource_att = new MatTableDataSource<Incident>(this.en_attente)
         setTimeout(() => {

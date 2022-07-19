@@ -11,6 +11,7 @@ import {RoleUpdateFormComponent} from "../forms/role-update-form/role-update-for
 import {TokenStorageService} from "../services/token-storage.service";
 import {Role} from "../models/Role";
 import {Location} from "@angular/common";
+import {ResetPswNoverifFormComponent} from "../forms/reset-psw-noverif-form/reset-psw-noverif-form.component";
 
 @Component({
   selector: 'app-single-user',
@@ -21,6 +22,7 @@ export class SingleUserComponent implements OnInit {
 
   user! : User;
   incidentTab! :  Incident[];
+  incidentTabcree! : Incident[];
   showAdminBoard = false;
   showAdmin = false;
   showTech = false;
@@ -66,6 +68,10 @@ export class SingleUserComponent implements OnInit {
 
       });
 
+      this.incidentService.getIncidentByCreator(this.user.id).subscribe(cree => {
+        this.incidentTabcree = cree;
+      })
+
       this.userService.getUserRole(userId).subscribe(r => {
         this.roles = r;
         for(var role of this.roles){
@@ -92,6 +98,21 @@ export class SingleUserComponent implements OnInit {
 
   openRole(): void {
     const dialogRef = this.dialog.open(RoleUpdateFormComponent, {
+      width: '500px',
+
+    });
+
+    dialogRef.componentInstance.userId = this.user.id;
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
+
+
+  openPassword(): void {
+    const dialogRef = this.dialog.open(ResetPswNoverifFormComponent, {
       width: '500px',
 
     });

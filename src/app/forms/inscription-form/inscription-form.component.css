@@ -1,6 +1,6 @@
 form {
   width:100%;
-  padding: 30px;
+/*  padding: 300px;
   /*border: 1px solid #f1f1f1;
   background: #fff;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
@@ -47,11 +47,14 @@ label {
   display: block;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
-  border-radius: 50%;
+  /*border-radius: 50%;  */
 }
 
 
 button {
   margin-top: 10px;
   width: 100%;
+}
+.form-control{
+  margin: 5px;
 }
