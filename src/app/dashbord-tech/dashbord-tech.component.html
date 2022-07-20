@@ -11,7 +11,7 @@
 
     <!--Charts-->
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols" [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="En attente">
+      <app-card title="En attente" [data]="en_attente">
 
         <div  >
           <table  mat-table [dataSource]="dataSource_att" aria-label="Elements">
@@ -58,7 +58,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols" [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="En cours">
+      <app-card title="En cours" [data]="en_cours">
         <div>
           <table mdbTableScroll scrollY="true" maxHeight="200" bordered="true" mat-table [dataSource]="dataSource_cours" >
 
@@ -103,7 +103,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols" [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="Terminé">
+      <app-card title="Terminé" [data]="termine">
         <div>
           <table  mat-table [dataSource]="dataSource_term" >
 
@@ -148,7 +148,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols" [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="Validé">
+      <app-card title="Validé" [data]="valide">
         <div>
           <table  mat-table [dataSource]="dataSource_vald" >
 

@@ -2,7 +2,7 @@
   <div class="card card-container">
     <img
       id="profile-img"
-      src="../../assets/logo.jpg"
+      src="../../assets/logo.png"
       class="profile-img-card"
     />
     <form
@@ -89,6 +89,25 @@
           />
         </div>
       </div>
+
+
+      <div class="form-group">
+      <input list="directions" name="direction" id="direction"
+             type="text"
+             class="form-control"
+             placeholder="Direction"
+             [(ngModel)]="form.direction"
+             required
+             #direction="ngModel">
+      </div>
+
+      <datalist id="directions">
+        <option value="Bureau d'odre">
+        <option value="Cabinet">
+        <option value="Département informatique">
+      </datalist>
+
+
 
 
 

@@ -31,7 +31,7 @@
   <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile>
 
-        <div class="card border-secondary mb-3"   >
+        <div class="card border-secondary "   >
           <div class="card-header text-center text-secondary"  > <strong>Demandeur</strong></div>
           <div class="card-body text-secondary" >
             <div class="table-responsive">
@@ -52,9 +52,12 @@
                   <th>Tel</th>
                   <td >{{creat.tel}}</td>
                 </tr>
+                <tr>
+                  <th>Direction</th>
+                  <td >{{creat.direction}}</td>
+                </tr>
                 </tbody>
               </table>
-
             </div>
           </div>
         </div>
@@ -104,7 +107,7 @@
           <p class="textcentrer">  <strong >{{incident.status}}</strong ></p>
         </mat-card-content>
       </mat-card>   -->
-        <div class="card border-danger mb-3"  *ngIf="enAttente" >
+        <div class="card border-danger "  *ngIf="enAttente" >
           <div class="card-header text-center text-danger"  > <strong>{{incident.status}}</strong></div>
           <div class="card-body text-danger" >
             <p class="card-title text-center"><mat-icon>hourglass_empty</mat-icon></p>
@@ -112,7 +115,7 @@
           <div class="card-footer text-danger border-danger"><mat-icon>calendar_today</mat-icon> {{incident.creation  | date: 'dd/MM/yyyy HH:mm' }}</div>
         </div>
 
-        <div class="card border-warning mb-3"  *ngIf="enCours" >
+        <div class="card border-warning "  *ngIf="enCours" >
           <div class="card-header text-center text-warning"  > <strong>{{incident.status}}</strong></div>
           <div class="card-body text-warning" >
             <p class="card-title text-center"><mat-icon>update</mat-icon></p>
@@ -121,7 +124,7 @@
 
         </div>
 
-        <div class="card border-primary mb-3"  *ngIf="termine" >
+        <div class="card border-primary "  *ngIf="termine" >
           <div class="card-header text-center text-primary"  > <strong>{{incident.status}}</strong></div>
           <div class="card-body text-primary" >
             <p class="card-title text-center"><mat-icon>task_alt</mat-icon></p>
@@ -130,7 +133,7 @@
 
         </div>
 
-        <div class="card border-success mb-3"  *ngIf="valide" >
+        <div class="card border-success "  *ngIf="valide" >
           <div class="card-header text-center text-success"  > <strong>{{incident.status}}</strong></div>
           <div class="card-body text-success" >
             <p class="card-title text-center"><mat-icon>verified</mat-icon></p>

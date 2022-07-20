@@ -7,6 +7,7 @@ import {Diagnostic} from "../../models/Diagnostic";
 import {ActivatedRoute} from "@angular/router";
 import {Incident} from "../../models/Incident";
 import {IncidentService} from "../../services/incident.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add-problem-form',
@@ -19,6 +20,7 @@ export class AddProblemFormComponent implements OnInit {
               private diagnosticService : DiagnosticService,
               private HttpClient : HttpClient,
               private route : ActivatedRoute,
+              public dialog: MatDialog,
               private incidentService : IncidentService) { }
 
   d! : Diagnostic;
@@ -53,13 +55,12 @@ export class AddProblemFormComponent implements OnInit {
 
 
   create(form: FormGroup){
-    alert('Succes'+JSON.stringify(form.value,null,4));
 
     this.diagnosticService.addProblem(this.incidentId, form.get('problem')?.value)
 
 
     this.form.reset()
-    window.location.reload();
+    this.dialog.closeAll();
 
   }
 

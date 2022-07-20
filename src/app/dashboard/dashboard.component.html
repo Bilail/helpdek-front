@@ -1,5 +1,5 @@
 <div class="grid-container" *ngIf="showAdminBoard">
-  <h1 class="mat-h1">Dashboard</h1>
+  <h1 class="mat-h1">Dashboard Admin</h1>
   <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
     <!--Mini Cards-->
     <mat-grid-tile *ngFor="let mc of miniCardData" [colspan]="1"
@@ -10,7 +10,7 @@
 
     <!--Charts-->
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols" [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="En attente">
+      <app-card title="En attente"  [data]="en_attente">
 
         <div  >
           <table  mat-table [dataSource]="dataSource_att">
@@ -57,7 +57,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols" [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="En cours">
+      <app-card title="En cours" [data]="en_cours">
         <div>
           <table mdbTableScroll scrollY="true" maxHeight="200" bordered="true" mat-table [dataSource]="dataSource_cours" >
 
@@ -74,7 +74,7 @@
 
             <ng-container matColumnDef="Createur">
               <th mat-header-cell *matHeaderCellDef> Createur </th>
-              <td mat-cell *matCellDef="let element"> {{element.createur}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.createur_nom}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Status">
@@ -102,7 +102,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols" [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="Terminé">
+      <app-card title="Terminé" [data]="termine">
         <div>
           <table  mat-table [dataSource]="dataSource_term" >
 
@@ -119,7 +119,7 @@
 
             <ng-container matColumnDef="Createur">
               <th mat-header-cell *matHeaderCellDef> Createur </th>
-              <td mat-cell *matCellDef="let element"> {{element.createur}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.createur_nom}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Status">
@@ -147,7 +147,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols" [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="Validé">
+      <app-card title="Validé" [data]="valide">
         <div>
           <table  mat-table [dataSource]="dataSource_vald" >
 
@@ -164,7 +164,7 @@
 
             <ng-container matColumnDef="Createur">
               <th mat-header-cell *matHeaderCellDef> Createur </th>
-              <td mat-cell *matCellDef="let element"> {{element.createur}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.createur_nom}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Status">
@@ -194,7 +194,7 @@
 
     <!--Table-->
     <mat-grid-tile [colspan]="( cardLayout | async )?.table?.cols" [rowspan]="( cardLayout | async )?.table?.rows">
-      <app-card title="Liste des interventions">
+      <app-card >
         <app-incident-list></app-incident-list>
       </app-card>
     </mat-grid-tile>

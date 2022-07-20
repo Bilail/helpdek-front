@@ -15,6 +15,7 @@ import {MatDrawerMode} from '@angular/material/sidenav';
 })
 export class NavigationComponent implements OnInit{
   showFiller = true;
+  role !: string;
   mode = new FormControl('side' as MatDrawerMode);
   shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
 
@@ -60,6 +61,16 @@ export class NavigationComponent implements OnInit{
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showTechBoard = this.roles.includes('ROLE_TECH');
       this.username = user.username;
+      if (user.roles == 'ROLE_ADMIN') {
+          this.role='Administrateur'
+        }
+      if (user.roles == 'ROLE_TECH') {
+        this.role='Technicien'
+      }
+      if (user.roles == 'ROLE_USER') {
+        this.role='Employé'
+      }
+
       console.log("role", this.roles)
     }
   }

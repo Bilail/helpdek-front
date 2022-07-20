@@ -57,6 +57,7 @@ import { ResetPswFormComponent } from './forms/reset-psw-form/reset-psw-form.com
 import { ConfirmationDeleteFormComponent } from './forms/confirmation-delete-form/confirmation-delete-form.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import { ResetPswNoverifFormComponent } from './forms/reset-psw-noverif-form/reset-psw-noverif-form.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 
 @NgModule({
@@ -122,6 +123,7 @@ import { ResetPswNoverifFormComponent } from './forms/reset-psw-noverif-form/res
         MatTabsModule,
         MatSortModule,
         MatStepperModule,
+        MatAutocompleteModule,
 
 
     ],

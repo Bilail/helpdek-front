@@ -63,18 +63,16 @@ export class SingleIncidentComponent implements OnInit {
       this.incidentService.commencer(this.incident.id);
 
     }
-      window.location.reload();
       }
 
     else if (//this.buttonText = "Terminer"
       this.incident.status == "En cours" ){
       this.incidentService.terminer(this.incident.id)
-      window.location.reload();
       }
     else {
       this.incidentService.valider(this.incident.id)
-      window.location.reload();
       }
+    window.location.reload();
     }
 
     relancer(){
@@ -172,7 +170,7 @@ export class SingleIncidentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
+      this.ngOnInit()
     });
   }
 
@@ -186,7 +184,7 @@ export class SingleIncidentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
+      this.ngOnInit()
 
 
     });
@@ -202,6 +200,7 @@ export class SingleIncidentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.ngOnInit()
 
     });
   }
@@ -217,7 +216,7 @@ export class SingleIncidentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
+      this.ngOnInit()
     });
   }
 

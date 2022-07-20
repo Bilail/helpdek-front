@@ -1,0 +1,32 @@
+h2 {
+  text-align: center;
+  border-bottom:2px solid #2eb9ce;
+}
+
+table {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+button {
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border: none;
+  box-shadow: lightgray 3px 3px 7px;
+  margin-right: 20px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+.mat-h1 {
+  margin: 20px;
+}
+

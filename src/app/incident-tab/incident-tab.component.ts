@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Incident} from "../models/Incident";
 import {IncidentService} from "../services/incident.service";
 
@@ -8,13 +8,20 @@ import {IncidentService} from "../services/incident.service";
   styleUrls: ['./incident-tab.component.css']
 })
 export class IncidentTabComponent implements OnInit {
-  incidentTab! :  Incident[]
-  displayedColumns: string[] = ['Id', 'Titre', 'Createur', 'Actions'];
+
+  @Input()
+  data! :  Incident[]
+
+  displayedColumns: string[] = ['Id', 'Titre', 'Createur','Catégorie','Création', 'Actions'];
 
   constructor(private incidentService : IncidentService) { }
 
   ngOnInit()  {
-    this.incidentTab = this.incidentService.getAllIncident();
+
+  }
+
+  ViewIncident(id : number) {
+    this.incidentService.viewIncident(id);
   }
 
 }

@@ -3,6 +3,7 @@ import {User} from "../../models/User";
 import {UserService} from "../../services/user.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {IncidentService} from "../../services/incident.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-attribue-incident-form',
@@ -19,6 +20,7 @@ export class AttribueIncidentFormComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
               private userService : UserService,
+              public dialog: MatDialog,
               private incidentService : IncidentService) { }
 
   form = this._formBuilder.group({
@@ -35,7 +37,7 @@ export class AttribueIncidentFormComponent implements OnInit {
   submit(form: FormGroup){
     this.incidentService.prendre_en_charge(form.get('tech')?.value, this.incidentId)
     this.form.reset()
-    window.location.reload();
+    this.dialog.closeAll();
   }
 
 }

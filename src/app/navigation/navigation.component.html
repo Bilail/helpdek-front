@@ -6,7 +6,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
 -->
-    <mat-sidenav #sidenav  [mode]="mode.value || 'push'">
+    <mat-sidenav #sidenav  [mode]="mode.value || 'push'" opened={{isLoggedIn}} >
 
 
     <mat-toolbar (click)="sidenav.toggle()">Gestion des interventions </mat-toolbar>
@@ -25,7 +25,7 @@
       </a>
       <a mat-list-item [routerLink]="['Incidents']" *ngIf="showAdminBoard">
         <mat-icon mat-list-icon>view_list</mat-icon>
-        <span mat-line>Incidents</span>
+        <span mat-line>Interventions</span>
       </a>
       <a mat-list-item [routerLink]="['Utilisateurs']" *ngIf="showAdminBoard">
         <mat-icon mat-list-icon>groups</mat-icon>
@@ -56,11 +56,11 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
 
-      <p *ngIf="isLoggedIn"><button mat-raised-button color="primary" (click)="sidenav.toggle()">Menu</button></p>
+      <p *ngIf="isLoggedIn"><button mat-raised-button color="primary" (click)="sidenav.toggle()"><mat-icon mat-list-icon>menu</mat-icon></button></p>
       <p *ngIf="!isLoggedIn"><button mat-button>Heldpdesk - Gestion d'intervention</button></p>
 
       <div class="example-button-row">
-        <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="Profil"><mat-icon>person</mat-icon>{{username}}</button>
+        <button *ngIf="isLoggedIn" mat-raised-button color="primary" data-toggle="tooltip" data-placement="left" title="connecté en tant que {{role}}" routerLink="Profil"><mat-icon>person</mat-icon>{{username}} </button>
         <button *ngIf="isLoggedIn" mat-raised-button color="primary" data-toggle="tooltip" data-placement="left" title="Créer Intervention"  (click)="openDialog()"><mat-icon>add</mat-icon> </button>
         <button *ngIf="isLoggedIn" mat-raised-button color="primary" data-toggle="tooltip" data-placement="left" title="Déconnexion"  (click)="logout()"><mat-icon>logout</mat-icon></button>
       </div>

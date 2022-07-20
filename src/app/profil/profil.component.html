@@ -1,3 +1,6 @@
+<div class="grid-container" >
+  <h1 class="mat-h1">Mon compte</h1>
+</div>
 <div class="container" *ngIf="isLoggedIn">
 
   <div class="user-card">
@@ -34,6 +37,10 @@
             <tr>
               <th>Email</th>
               <td >{{user.mail}}</td>
+            </tr>
+            <tr>
+              <th>Direction</th>
+              <td >{{user.direction}}</td>
             </tr>
 
 

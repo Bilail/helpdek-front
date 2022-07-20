@@ -5,6 +5,7 @@ import {IncidentService} from "../../services/incident.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TokenStorageService} from "../../services/token-storage.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-update-incident-form',
@@ -22,6 +23,7 @@ export class UpdateIncidentFormComponent implements OnInit {
               private HttpClient : HttpClient,
               private router:Router,
               private route : ActivatedRoute,
+              public dialog: MatDialog,
               private token: TokenStorageService
   ) {
   }
@@ -69,8 +71,8 @@ export class UpdateIncidentFormComponent implements OnInit {
     )
 
     this.form.reset();
-    window.location.reload();
-
+    //window.location.reload();
+    this.dialog.closeAll();
 
 
   }

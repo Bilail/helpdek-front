@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Diagnostic} from "../../models/Diagnostic";
 import {ActivatedRoute} from "@angular/router";
 import {IncidentService} from "../../services/incident.service";
+import {MatDialog} from "@angular/material/dialog";
 @Component({
   selector: 'app-add-solution-form',
   templateUrl: './add-solution-form.component.html',
@@ -17,6 +18,7 @@ export class AddSolutionFormComponent implements OnInit {
              private diagnosticService : DiagnosticService,
              private HttpClient : HttpClient,
              private route : ActivatedRoute,
+              public dialog: MatDialog,
               private incidentService : IncidentService) { }
 
 
@@ -49,14 +51,12 @@ export class AddSolutionFormComponent implements OnInit {
 
 
   create(form: FormGroup){
-    alert('Succes'+JSON.stringify(form.value,null,4));
 
     this.diagnosticService.addSolution(this.incidentId, form.get('solution')?.value)
 
     this.incidentService.terminer(this.incidentId );
     this.form.reset()
-    window.location.reload();
-
+    this.dialog.closeAll();
   }
 
 }

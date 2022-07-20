@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {TokenStorageService} from "../../services/token-storage.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Role} from "../../models/Role";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-role-update-form',
@@ -20,6 +21,7 @@ export class RoleUpdateFormComponent implements OnInit {
 
   constructor(private userService : UserService,
               private token: TokenStorageService,
+              public dialog: MatDialog,
               private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class RoleUpdateFormComponent implements OnInit {
     this.userService.addRole(this.userId,form.get('role')?.value);
   console.log(form.get('role')?.value)
     this.form.reset();
-    window.location.reload();
+    this.dialog.closeAll();
   }
 
 }

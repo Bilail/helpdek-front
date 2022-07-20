@@ -33,12 +33,18 @@ export class AddIncidentFormComponent implements OnInit {
   }
 
   form = this._formBuilder.group({
-    titre : [null, [Validators.required]]
+    titre : [null, [Validators.required]],
+    description : [null,[Validators.required]],
+    createur : [this.token.getUser().id,[Validators.required]],
+    createur_nom : [null,[Validators.required]],
+    categorie : [null,[Validators.required]],
+    status : ["En attente",[Validators.required]],
+    date_of_creation : [new Date(),[Validators.required]]
   });
 
 
   ngOnInit(): void {
-    /*this.userService.getUserbyId(this.token.getUser().id).subscribe(data => {
+    this.userService.getUserbyId(this.token.getUser().id).subscribe(data => {
       this.user = data;
     this.form = this._formBuilder.group({
       titre : [null, [Validators.required]],
@@ -48,27 +54,27 @@ export class AddIncidentFormComponent implements OnInit {
       categorie : [null,[Validators.required]],
       status : ["En attente",[Validators.required]],
       date_of_creation : [new Date(),[Validators.required]]
-    })*/
-
+    })
+/*
       this.form = this._formBuilder.group({
         titre : [null, [Validators.required]],
         description : [null,[Validators.required]],
         createur : [this.token.getUser().id,[Validators.required]],
-        createur_nom : ['bilail',[Validators.required]],
+        createur_nom : [null,[Validators.required]],
         categorie : [null,[Validators.required]],
         status : ["En attente",[Validators.required]],
-        date_of_creation : [new Date(),[Validators.required]]
+        date_of_creation : [new Date(),[Validators.required]]*/
     })
   }
+
   create(form: FormGroup){
-    this.HttpClient.post<Incident>(this.apiUrl+"addincident", form.value).subscribe(data =>
-    this.incident = data
+      this.HttpClient.post<Incident>(this.apiUrl + "addincident", form.value).subscribe(data =>
+        this.incident = data
+      )
 
-    )
-
-    this.form.reset();
-    window.location.reload();
-    console.log("creer")
+      this.form.reset();
+      window.location.reload();
+      console.log("creer")
 
 
   }

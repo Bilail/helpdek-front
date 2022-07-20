@@ -7,6 +7,7 @@ export class User {
   tel! : string;
   role!: string;
   username! : string
+  direction! : string
 
   constructor(id : number, nom: string, prenom: string, bureau: string, tel : string,  mail: string, username : string) {
     this.id = id;

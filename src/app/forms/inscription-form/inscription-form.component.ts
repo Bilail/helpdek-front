@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {Observable, startWith} from "rxjs";
+import {map} from "rxjs/operators";
 
 
 @Component({
@@ -14,11 +16,13 @@ export class InscriptionFormComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   form: any = {};
-
+  directions = ["Bureau d'ordre", "Direction informatique"]
+  //filteredDirection! : Observable<string[]>;
   /*hide = true;
   login = this._formBuilder.group({
     email : [Validators.required, Validators.email]
   });*/
+  direction = new FormControl('');
 
   constructor(private _formBuilder: FormBuilder,
               private authService: AuthService) { }
@@ -32,14 +36,18 @@ export class InscriptionFormComponent implements OnInit {
       bureau : [null,[Validators.required]],
       tel : [null,[Validators.required]],
       username : [null,[Validators.required]],
-    })*/
+    })
+    this.filteredDirection = this.direction.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );*/
   }
+  /*private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
 
-  connect(login : FormGroup){
-    console.log("connecter")
-    alert('Succes'+JSON.stringify(login.value,null,4));
+    return this.directions.filter(option => option.toLowerCase().includes(filterValue));
+  }*/
 
-  }
 
   onSubmit() {
     this.authService.register(this.form).subscribe(
@@ -54,5 +62,7 @@ export class InscriptionFormComponent implements OnInit {
       }
     );
   }
+
+
 
 }

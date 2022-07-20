@@ -8,6 +8,7 @@ import {Incident} from "../../models/Incident";
 import {UserService} from "../../services/user.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {User} from "../../models/User";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-update-profil-form',
@@ -19,6 +20,7 @@ export class UpdateProfilFormComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
               private userService : UserService,
               private HttpClient : HttpClient,
+              public dialog: MatDialog,
               private router:Router,
               private route : ActivatedRoute,
               private token: TokenStorageService
@@ -59,9 +61,8 @@ export class UpdateProfilFormComponent implements OnInit {
     this.userService.updateProfil(this.userId,form.get('bureau')?.value, form.get('telephone')?.value,form.get('mail')?.value )
 
     this.form.reset();
-    window.location.reload();
+    this.dialog.closeAll();
     console.log("creer")
-
 
   }
 
